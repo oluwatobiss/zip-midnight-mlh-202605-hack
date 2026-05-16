@@ -55,3 +55,6 @@ temp/
 
 # Midnight network state (per-network seeds, deploy addresses)
 .midnight-state.json
+
+# Local Midnight database for testing
+midnight-level-db/

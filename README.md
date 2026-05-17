@@ -1,173 +1,86 @@
-# 202605-ai-track-midnight-mlh-hack
+# ZIP — Zero-Exposure Identity Proof
 
-A Midnight Network smart contract scaffolded with create-mn-app.
+**"Prove you're human. Reveal nothing else."**
 
-## Quick start
+ZIP is a privacy-first Proof-of-Humanity application built for the Midnight Hackathon. It demonstrates a powerful idea: users should be able to prove they are real humans to external applications without exposing any sensitive identity data (like passports, biometrics, or real names).
 
-Requirements: Node 22, Docker (with Compose v2), and the Compact compiler at the version pinned in `.compact-version` at the create-mn-app repo root (the version this project was scaffolded against).
+This project strongly aligns with the **Midnight Network's** privacy-first philosophy, utilizing the principles of Zero-Knowledge (ZK) cryptography.
 
-```bash
-npm install
-npm run setup
-npm run test:e2e
-```
+---
 
-`npm run setup` runs end-to-end with no prompts:
+## 🌟 The MVP Experience
 
-1. `docker compose up -d --wait` — starts a local Midnight devnet (node, indexer, proof-server) and blocks until all three pass their healthchecks.
-2. `npm run compile` — compiles `contracts/hello-world.compact` to `contracts/managed/hello-world/`.
-3. `npm run deploy` — derives the genesis-seed wallet (NIGHT pre-minted), registers UTXOs for DUST generation, deploys the contract, writes `.midnight-state.json`.
+This MVP focuses on emotional clarity and a seamless, premium user experience to communicate the power of zero-exposure proofs. 
 
-`npm run test:e2e` reconnects to the deployed contract and reads its ledger state. Exits 0 if the contract is live and indexable.
+It consists of three core flows:
 
-## Local devnet
+1. **User Onboarding (Local Vault)**
+   - Users create a secure local identity vault using a public alias.
+   - Raw credentials never leave the browser. A local ZK key is derived and encrypted exclusively in the device's secure storage.
+   - *Visualizes: Privacy-first design and local-only data retention.*
 
-The project ships its own devnet via `docker-compose.yml`:
+2. **Generate Human Proof (Selective Disclosure)**
+   - Users can selectively disclose specific rules (e.g., "Proof of Humanity").
+   - The application simulates compiling a ZK circuit and synthesizing a ZK-SNARK proof.
+   - *Visualizes: Mathematical proof generation without exposing underlying data.*
 
-| Service        | Port | Purpose                                         |
-| -------------- | ---- | ----------------------------------------------- |
-| `node`         | 9944 | Midnight node, `dev` chain preset               |
-| `indexer`      | 8088 | GraphQL indexer for chain state                 |
-| `proof-server` | 6300 | Generates ZK proofs for contract transactions   |
+3. **Connect to Demo App (Nova Social)**
+   - "Nova Social" is a mocked, futuristic community platform experiencing bot attacks.
+   - Users authenticate with their ZIP proof via a secure handshake.
+   - *Visualizes: An external application definitively verifying humanity without ever learning the user's real identity.*
 
-State lives in container-managed volumes. Tear everything down with:
+---
 
-```bash
-docker compose down -v
-```
+## 🏗️ Architecture & Tech Stack
 
-That removes all containers, networks, and volumes. The next `npm run setup` starts from a clean slate.
+To prioritize a highly polished, demo-ready experience, this MVP isolates the application logic in the browser while maintaining the foundation for future Midnight smart contract integration.
 
-## ⚠️ LOCAL DEVNET ONLY
+### Frontend (`/frontend`)
+- **React 19 & TypeScript**: Component-driven architecture.
+- **Vite**: Ultra-fast build tooling and hot-module replacement.
+- **TailwindCSS v4**: Premium "Obsidian Dark" aesthetics, custom glassmorphism panels, and neon accents.
+- **Framer Motion**: Fluid animations simulating cryptographic latency for an immersive experience.
 
-The deploy script uses a well-known genesis seed (`0000…0001`) so the
-pre-minted NIGHT in the `dev` chain preset is immediately available. **Do
-not use this seed against Preprod, mainnet, or any environment that
-handles real value** — anyone running this devnet has full access to
-funds at this seed.
+### Backend & Midnight Infrastructure
+This repository was originally scaffolded using `create-mn-app`. 
+- **Simulated MVP Backend**: For the scope of this hackathon, real blockchain transactions are bypassed to ensure presentation speed and reliability. All cryptographic operations (vault generation, encryption, ZK-SNARK synthesis) are **simulated locally** in the browser via `frontend/src/services/zipCryptoService.ts`.
+- **Future Integration**: The `contracts/` directory contains a sample Compact smart contract (`hello-world.compact`). Moving forward, this structure allows developers to easily swap the mocked `zipCryptoService` with the actual Midnight Compact SDK and live blockchain deployment scripts found in the `src/` and `scripts/` directories.
 
-## Networks
+---
 
-This DApp supports three networks:
+## 🚀 How to Run Locally
 
-| Network | When to use | Default? |
-|---|---|---|
-| `undeployed` | Local devnet bundled in `docker-compose.yml`. Genesis seed is hardcoded; no funding needed. | yes |
-| `preview` | Public preview testnet. Faucet at `https://faucet.preview.midnight.network`. |  |
-| `preprod` | Public preprod testnet. Faucet at `https://faucet.preprod.midnight.network`. |  |
+You can spin up the full ZIP MVP frontend in just a few seconds.
 
-The active network is **sticky**: whichever network you last interacted
-with stays active until you switch. Any command run with `--network <name>`
-also sets that network active for subsequent commands. The default on a
-fresh project is `undeployed` (local devnet).
+### Prerequisites
+- Node.js (v18 or higher)
+- npm
 
-```sh
-npm run setup -- --network preview   # runs on preview AND makes it active
-npm run cli                          # still uses preview
-npm run check-balance                # still uses preview
-```
+### Quick Start
 
-You can also switch without running anything else:
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd frontend
+   ```
 
-```sh
-npm run network preview         # active network is now preview
-npm run network                 # prints current active network
-npm run network undeployed      # switch back to local devnet
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### How wallets work across networks
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-- `undeployed` uses a hardcoded genesis seed. Local devnet pre-funds it.
-- `preview` and `preprod` generate a fresh seed on first use and store it
-  in `.midnight-state.json` (gitignored). The seed survives switching
-  networks — switch back later and your funded wallet returns.
-- **Back up your seed** if you fund a public-network wallet you care
-  about. Open `.midnight-state.json` and copy the relevant
-  `wallets.<network>.seed` value to a safe place.
+4. **View the Application:**
+   Open your browser and navigate to **[http://localhost:5173](http://localhost:5173)** to start the demo!
 
-### Funding a public-network wallet
+---
 
-On the first run with `--network preview` (or `preprod`):
+## 🛡️ ZIP Threat Guard (AI Feature)
 
-1. `setup` will print your wallet address and the faucet URL.
-2. Open the faucet URL, paste the address, request tNIGHT.
-3. `setup` polls the wallet balance every 10 s and continues automatically
-   once funds arrive.
-4. The default poll budget is 10 minutes. Override with
-   `MIDNIGHT_FAUCET_TIMEOUT_MS=1800000` (30 min) for unattended runs.
+The application includes a lightweight, simulated AI feature called the **Threat Guard**. Located on the Dashboard, it demonstrates how anomaly detection can monitor proof request velocity and prevent bot-like reuse of proofs—all executed entirely on the client side without inspecting raw identity data.
 
-If the faucet is slow or the script times out, your seed is preserved.
-Re-run `npm run setup -- --network preview` once the funds land.
-
-### Environment overrides
-
-These env vars override the active network's config (no per-network
-suffix — they apply to whichever network is active for the run):
-
-| Variable | Effect |
-|---|---|
-| `MIDNIGHT_WALLET_SEED` | Use this seed instead of generating/persisting one. Useful for CI with a pre-funded wallet. |
-| `MIDNIGHT_INDEXER_URL` | Override the indexer GraphQL URL. |
-| `MIDNIGHT_INDEXER_WS_URL` | Override the indexer WS URL. |
-| `MIDNIGHT_NODE_URL` | Override the node RPC URL. |
-| `MIDNIGHT_FAUCET_URL` | Override the faucet URL printed during setup. |
-| `MIDNIGHT_PROOF_SERVER_URL` | Override the proof server URL — set to a public proof server (e.g. `https://lace-proof-pub.preview.midnight.network`) to skip running one locally. |
-| `MIDNIGHT_FAUCET_TIMEOUT_MS` | Faucet poll budget in milliseconds (default 600000 = 10 min). |
-
-By default all networks use the **local** proof server. Public proof
-servers exist (see the env override above) but the local default keeps
-your witness data on your machine and avoids depending on a remote
-service for the deploy hot path.
-
-### Switching back to local devnet
-
-```sh
-npm run network undeployed     # or: npm run setup -- --network undeployed
-```
-
-Your preview/preprod wallet seeds and deploy addresses stay in
-`.midnight-state.json`. Switch back later, and they're still there.
-
-## Available scripts
-
-| Script                  | Description                                                    |
-| ----------------------- | -------------------------------------------------------------- |
-| `npm run setup`         | One-shot: start devnet, compile, deploy.                       |
-| `npm run compile`       | Compile the Compact contract.                                  |
-| `npm run deploy`        | Deploy the compiled contract (requires devnet up + compiled).  |
-| `npm run cli`           | Interactive CLI to call circuits on the deployed contract.     |
-| `npm run check-balance` | Print the genesis-seed wallet's NIGHT and DUST balances.       |
-| `npm run test:e2e`      | Smoke + read-back check against the deployed contract.         |
-| `npm run clean`         | Remove `contracts/managed/` and `.midnight-state.json`.        |
-| `npm run proof-server:start` / `:stop` | Compose lifecycle for just the proof-server service. |
-
-## Project structure
-
-```
-202605-ai-track-midnight-mlh-hack/
-├── contracts/
-│   └── hello-world.compact     # Compact source
-├── scripts/
-│   └── e2e-check.ts            # smoke + read-back
-├── src/
-│   ├── network.ts              # network selection + state file management
-│   ├── setup.ts                # orchestrator for `npm run setup`
-│   ├── deploy.ts               # deploy the contract
-│   ├── cli.ts                  # interact with deployed contract
-│   └── check-balance.ts        # NIGHT / DUST balance
-├── docker-compose.yml          # node + indexer + proof-server
-├── .midnight-state.json        # written by deploy (gitignored)
-├── package.json
-└── tsconfig.json
-```
-
-## Compact compiler version
-
-`.compact-version` at the create-mn-app repo root pinned the compiler
-version this project was scaffolded against. To upgrade your local
-compiler to that version:
-
-```bash
-compact update <version>
-compact use <version>
-```
+---
+*Built for the Midnight MLH Hackathon 2026.*

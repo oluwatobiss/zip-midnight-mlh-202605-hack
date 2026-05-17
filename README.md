@@ -23,6 +23,14 @@
 
 ---
 
+<br/>
+
+<div align="center">
+  <img src="./assets/zip-hero.png" alt="ZIP Hero UI" width="100%" />
+</div>
+
+<br/>
+
 ## 📖 Overview
 
 **ZIP** is a **privacy-first Proof-of-Humanity** application that solves one of the most critical challenges in the modern internet: *How can you prove you are a real human without revealing who you are?*
@@ -51,24 +59,117 @@ ZIP is purpose-built for the **Midnight Network**, a privacy-preserving blockcha
 The MVP delivers three polished, emotionally resonant flows:
 
 ### 1. 🏛️ User Onboarding — *Local Vault*
+
+<div align="center">
+  <img src="./assets/onboarding-flow.png" alt="ZIP Onboarding Flow" width="90%" />
+</div>
+
 Users create a secure local identity vault using a **public alias** of their choosing.
 - Raw credentials **never leave the browser**
 - A local ZK key is derived and encrypted exclusively in the device's secure storage
 - *Visualizes: Privacy-first design and local-only data retention*
 
 ### 2. 🧮 Generate Human Proof — *Selective Disclosure*
+
+<div align="center">
+  <img src="./assets/proof-desktop.png" alt="ZIP Proof Generation Desktop Flow" width="70%" />
+  <img src="./assets/proof-mobile.png" alt="ZIP Proof Generation Mobile Flow" width="22%" />
+</div>
+
 Users can selectively disclose specific attestations (e.g., "Proof of Humanity") while keeping everything else private.
 - Simulates compiling a ZK circuit
 - Synthesizes a ZK-SNARK proof in real time with visual feedback
 - *Visualizes: Mathematical proof generation without exposing underlying data*
 
 ### 3. 🌐 Connect to Nova Social — *Zero-Knowledge Handshake*
+
+<div align="center">
+  <img src="./assets/demo-app-verification-desktop.png" alt="Nova Social App Desktop Verification Flow" width="70%" />
+  <img src="./assets/demo-app-verification-mobile.png" alt="Nova Social App Mobile Verification Flow" width="22%" />
+</div>
+
 "Nova Social" is a mocked, futuristic community platform under siege from bot attacks. Users authenticate with their ZIP proof via a secure handshake.
 - The platform receives **only a cryptographic proof** — never the user's real identity
 - Verification is instant and mathematically sound
 - *Visualizes: An external app definitively verifying humanity without learning who you are*
 
 ---
+
+## 🧠 Privacy Architecture
+
+ZIP is designed around one core principle: prove humanity without exposing identity.
+
+```txt
+─────────────────────────────────────────────────────────────
+                         👤 USER                             
+                                                             
+     Creates a secure identity vault using a public alias    
+                                                             
+        🔒 Raw identity data NEVER leaves device             
+─────────────────────────────────────────────────────────────
+                              │
+                              ▼
+─────────────────────────────────────────────────────────────
+                  🔐 ZIP LOCAL IDENTITY VAULT                
+                                                             
+  • Encrypted browser storage                               
+  • Local proof key generation                              
+  • Selective disclosure controls                           
+  • Privacy-first credential management                     
+                                                             
+        "Proofs are shared. Data stays private."            
+─────────────────────────────────────────────────────────────
+                              │
+                              ▼
+─────────────────────────────────────────────────────────────
+                 🧮 HUMAN PROOF GENERATION                   
+                                                             
+  ZIP generates a privacy-preserving proof confirming:      
+                                                             
+     ✅ Verified Human                                       
+     ✅ Unique User                                          
+     ✅ Minimal Disclosure                                   
+                                                             
+  WITHOUT exposing:                                          
+                                                             
+     ❌ Passport                                              
+     ❌ Biometrics                                            
+     ❌ Face Scans                                            
+     ❌ Legal Identity                                        
+                                                             
+        Simulated ZK proof + confidential computation        
+─────────────────────────────────────────────────────────────
+                              │
+                              ▼
+─────────────────────────────────────────────────────────────
+             🌑 MIDNIGHT CONFIDENTIAL LAYER                  
+                                                             
+  • Privacy-preserving verification                         
+  • Confidential state management                           
+  • Selective disclosure architecture                       
+  • Zero unnecessary data exposure                          
+                                                             
+       Only cryptographic proof data is transmitted         
+─────────────────────────────────────────────────────────────
+                              │
+                              ▼
+─────────────────────────────────────────────────────────────
+                  🌐 NOVA SOCIAL (DEMO APP)                  
+                                                             
+  Receives ONLY:                                             
+                                                             
+       { verifiedHuman: true }                              
+                                                             
+  NEVER receives:                                            
+                                                             
+     ❌ Name                                                  
+     ❌ Passport                                              
+     ❌ Biometrics                                            
+     ❌ Sensitive credentials                                 
+                                                             
+      ✅ Humanity verified WITHOUT surveillance              
+─────────────────────────────────────────────────────────────
+```
 
 ## 🏗️ Architecture & Tech Stack
 
@@ -132,7 +233,7 @@ zip-midnight-mlh-202605-hack/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ShazilParwez/zip-midnight-mlh-202605-hack.git
+git clone https://github.com/oluwatobiss/zip-midnight-mlh-202605-hack.git
 cd zip-midnight-mlh-202605-hack
 
 # 2. Navigate to the frontend

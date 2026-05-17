@@ -214,15 +214,15 @@ Contributions, ideas, and feedback are welcome! Feel free to open an issue or su
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/ShazilParwez">
-        <img src="https://github.com/ShazilParwez.png" width="80px" alt="Shazil Parwez"/><br/>
-        <sub><b>Shazil Parwez</b></sub>
+      <a href="https://github.com/GPramodh07">
+        <img src="https://github.com/GPramodh07.png" width="80px" alt="Pramodh G"/><br/>
+        <sub><b>G Pramodh</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/GPramodh07">
-        <img src="https://github.com/GPramodh07.png" width="80px" alt="Pramodh G"/><br/>
-        <sub><b>Pramodh G</b></sub>
+      <a href="https://github.com/ShazilParwez">
+        <img src="https://github.com/ShazilParwez.png" width="80px" alt="Shazil Parwez"/><br/>
+        <sub><b>Shazil Parwez</b></sub>
       </a>
     </td>
   </tr>

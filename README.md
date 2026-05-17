@@ -242,7 +242,14 @@ cd frontend
 # 3. Install dependencies
 npm install
 
-# 4. Start the development server
+# 4. Create your frontend environment file
+cp .env.local.sample .env.local
+
+# 5. Edit .env.local and replace the example value for VITE_GEMINI_API_KEY
+
+VITE_GEMINI_API_KEY=xxxxxxxxxx
+
+# 6. Start the development server
 npm run dev
 ```
 

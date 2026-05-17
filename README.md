@@ -1,86 +1,245 @@
-# ZIP — Zero-Exposure Identity Proof
+<div align="center">
 
-**"Prove you're human. Reveal nothing else."**
+<br/>
 
-ZIP is a privacy-first Proof-of-Humanity application built for the Midnight Hackathon. It demonstrates a powerful idea: users should be able to prove they are real humans to external applications without exposing any sensitive identity data (like passports, biometrics, or real names).
+# 🔒 ZIP — Zero-Exposure Identity Proof
 
-This project strongly aligns with the **Midnight Network's** privacy-first philosophy, utilizing the principles of Zero-Knowledge (ZK) cryptography.
+### *"Prove you're human. Reveal nothing else."*
+
+<br/>
+
+[![Built with React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-⚡-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Midnight Network](https://img.shields.io/badge/Midnight-Network-8B5CF6?style=for-the-badge)](https://midnight.network/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
+
+<br/>
+
+> Built for the **Midnight MLH Hackathon 2026** — AI Track 🚀
+
+</div>
+
+---
+
+## 📖 Overview
+
+**ZIP** is a **privacy-first Proof-of-Humanity** application that solves one of the most critical challenges in the modern internet: *How can you prove you are a real human without revealing who you are?*
+
+Traditional identity systems force users to hand over passports, biometrics, or personal details just to access services. ZIP flips this model entirely. Using the principles of **Zero-Knowledge (ZK) cryptography**, users can generate a cryptographic proof of their humanity and present it to any application — without ever exposing the underlying data.
+
+ZIP is purpose-built for the **Midnight Network**, a privacy-preserving blockchain layer that makes zero-knowledge proofs first-class citizens. This project demonstrates how privacy and utility can coexist in a seamless, elegant user experience.
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---|---|
+| 🔐 **Local Identity Vault** | All credentials are encrypted and stored locally — nothing ever leaves your browser |
+| 🧮 **ZK-SNARK Proof Generation** | Simulates the full cryptographic pipeline of compiling a ZK circuit and synthesizing a proof |
+| 🤝 **Nova Social Integration** | Demonstrates a real-world use case: proving humanity to a bot-plagued social platform |
+| 🛡️ **AI Threat Guard** | Client-side anomaly detection that monitors proof request velocity to prevent bot abuse |
+| 🌑 **Obsidian Dark UI** | Premium glassmorphism aesthetics with neon accents and fluid Framer Motion animations |
+| ⚡ **Privacy-by-Default** | No backend, no database, no telemetry — zero exposure by design |
 
 ---
 
 ## 🌟 The MVP Experience
 
-This MVP focuses on emotional clarity and a seamless, premium user experience to communicate the power of zero-exposure proofs. 
+The MVP delivers three polished, emotionally resonant flows:
 
-It consists of three core flows:
+### 1. 🏛️ User Onboarding — *Local Vault*
+Users create a secure local identity vault using a **public alias** of their choosing.
+- Raw credentials **never leave the browser**
+- A local ZK key is derived and encrypted exclusively in the device's secure storage
+- *Visualizes: Privacy-first design and local-only data retention*
 
-1. **User Onboarding (Local Vault)**
-   - Users create a secure local identity vault using a public alias.
-   - Raw credentials never leave the browser. A local ZK key is derived and encrypted exclusively in the device's secure storage.
-   - *Visualizes: Privacy-first design and local-only data retention.*
+### 2. 🧮 Generate Human Proof — *Selective Disclosure*
+Users can selectively disclose specific attestations (e.g., "Proof of Humanity") while keeping everything else private.
+- Simulates compiling a ZK circuit
+- Synthesizes a ZK-SNARK proof in real time with visual feedback
+- *Visualizes: Mathematical proof generation without exposing underlying data*
 
-2. **Generate Human Proof (Selective Disclosure)**
-   - Users can selectively disclose specific rules (e.g., "Proof of Humanity").
-   - The application simulates compiling a ZK circuit and synthesizing a ZK-SNARK proof.
-   - *Visualizes: Mathematical proof generation without exposing underlying data.*
-
-3. **Connect to Demo App (Nova Social)**
-   - "Nova Social" is a mocked, futuristic community platform experiencing bot attacks.
-   - Users authenticate with their ZIP proof via a secure handshake.
-   - *Visualizes: An external application definitively verifying humanity without ever learning the user's real identity.*
+### 3. 🌐 Connect to Nova Social — *Zero-Knowledge Handshake*
+"Nova Social" is a mocked, futuristic community platform under siege from bot attacks. Users authenticate with their ZIP proof via a secure handshake.
+- The platform receives **only a cryptographic proof** — never the user's real identity
+- Verification is instant and mathematically sound
+- *Visualizes: An external app definitively verifying humanity without learning who you are*
 
 ---
 
 ## 🏗️ Architecture & Tech Stack
 
-To prioritize a highly polished, demo-ready experience, this MVP isolates the application logic in the browser while maintaining the foundation for future Midnight smart contract integration.
+ZIP prioritizes a polished, demo-ready experience. Application logic runs entirely in the browser, with the architecture designed to slot in real Midnight smart contract calls when ready.
 
-### Frontend (`/frontend`)
-- **React 19 & TypeScript**: Component-driven architecture.
-- **Vite**: Ultra-fast build tooling and hot-module replacement.
-- **TailwindCSS v4**: Premium "Obsidian Dark" aesthetics, custom glassmorphism panels, and neon accents.
-- **Framer Motion**: Fluid animations simulating cryptographic latency for an immersive experience.
+### 🖥️ Frontend (`/frontend`)
 
-### Backend & Midnight Infrastructure
-This repository was originally scaffolded using `create-mn-app`. 
-- **Simulated MVP Backend**: For the scope of this hackathon, real blockchain transactions are bypassed to ensure presentation speed and reliability. All cryptographic operations (vault generation, encryption, ZK-SNARK synthesis) are **simulated locally** in the browser via `frontend/src/services/zipCryptoService.ts`.
-- **Future Integration**: The `contracts/` directory contains a sample Compact smart contract (`hello-world.compact`). Moving forward, this structure allows developers to easily swap the mocked `zipCryptoService` with the actual Midnight Compact SDK and live blockchain deployment scripts found in the `src/` and `scripts/` directories.
+| Technology | Purpose |
+|---|---|
+| **React 19** | Component-driven UI architecture |
+| **TypeScript** | End-to-end type safety |
+| **Vite** | Ultra-fast build tooling & HMR |
+| **TailwindCSS v4** | Premium "Obsidian Dark" theme, glassmorphism, neon accents |
+| **Framer Motion** | Fluid animations simulating cryptographic latency |
+
+### 🔗 Midnight Network Infrastructure
+
+| Component | Description |
+|---|---|
+| **Compact Smart Contracts** | `contracts/` contains `HumanityProof.compact` and `hello-world.compact` |
+| **Midnight JS SDK** | Full suite of `@midnight-ntwrk/*` packages for ledger, wallet, ZK, and indexer |
+| **Proof Server** | Docker-based ZK proof generation server (`docker compose up -d`) |
+| **ZK Crypto Service** | `frontend/src/services/zipCryptoService.ts` — simulated locally for MVP speed |
+
+### 🤖 AI Integration
+
+| Component | Description |
+|---|---|
+| **Google Gemini** | `@google/genai` powers the AI Threat Guard anomaly detection layer |
+
+### 🗺️ Repository Structure
+
+```
+zip-midnight-mlh-202605-hack/
+├── 📁 contracts/             # Compact smart contracts (HumanityProof, hello-world)
+│   └── 📁 managed/           # Compiled contract artifacts
+├── 📁 frontend/              # React + Vite application
+│   ├── 📁 src/
+│   │   ├── 📁 components/    # UI components
+│   │   ├── 📁 services/      # zipCryptoService (ZK simulation)
+│   │   └── 📁 pages/         # Application flows
+│   └── vite.config.ts
+├── 📁 scripts/               # E2E check scripts
+├── 📁 src/                   # Midnight backend (deploy, setup, CLI)
+├── docker-compose.yml        # Proof server container
+├── package.json
+└── README.md
+```
 
 ---
 
-## 🚀 How to Run Locally
-
-You can spin up the full ZIP MVP frontend in just a few seconds.
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm
 
-### Quick Start
+- **Node.js** `>= 22.0.0`
+- **npm** (bundled with Node.js)
+- **Docker** (optional — for the real ZK proof server)
 
-1. **Navigate to the frontend directory:**
-   ```bash
-   cd frontend
-   ```
+### ⚡ Quick Start (Frontend MVP)
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/ShazilParwez/zip-midnight-mlh-202605-hack.git
+cd zip-midnight-mlh-202605-hack
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+# 2. Navigate to the frontend
+cd frontend
 
-4. **View the Application:**
-   Open your browser and navigate to **[http://localhost:5173](http://localhost:5173)** to start the demo!
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm run dev
+```
+
+Open your browser at **[http://localhost:5173](http://localhost:5173)** and experience ZIP! 🎉
+
+### 🐳 Running the ZK Proof Server (Optional)
+
+For full Midnight Network integration with a live proof server:
+
+```bash
+# From the root directory
+npm run proof-server:start   # Starts the Docker proof server
+
+# When done
+npm run proof-server:stop
+```
+
+### 🔨 Compiling Smart Contracts (Optional)
+
+```bash
+# Compile both Compact contracts
+npm run compile
+```
 
 ---
 
 ## 🛡️ ZIP Threat Guard (AI Feature)
 
-The application includes a lightweight, simulated AI feature called the **Threat Guard**. Located on the Dashboard, it demonstrates how anomaly detection can monitor proof request velocity and prevent bot-like reuse of proofs—all executed entirely on the client side without inspecting raw identity data.
+The **Threat Guard** is a lightweight AI-powered security layer built into the ZIP Dashboard.
+
+- Monitors **proof request velocity** in real time
+- Flags anomalous patterns that resemble bot behavior (e.g., rapid repeated proof generation)
+- Runs **entirely client-side** — no raw identity data is ever inspected or transmitted
+- Powered by **Google Gemini** for intelligent anomaly scoring
+
+This demonstrates how AI and ZK cryptography can be combined to create security systems that are both intelligent and privacy-preserving.
 
 ---
-*Built for the Midnight MLH Hackathon 2026.*
+
+## 🔮 Future Roadmap
+
+- [ ] **Live Midnight Testnet Deployment** — Swap `zipCryptoService` simulation for the real Compact SDK
+- [ ] **Lace Wallet Integration** — Native Midnight wallet connectivity
+- [ ] **Multi-Attestation Support** — Age proofs, credential proofs, KYC-free verification
+- [ ] **Cross-App Proof Portability** — One proof, usable across any Midnight-connected dApp
+- [ ] **Decentralized Proof Registry** — On-chain proof revocation and validity checks
+
+---
+
+## 🤝 Contributing
+
+Contributions, ideas, and feedback are welcome! Feel free to open an issue or submit a pull request.
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+---
+
+## 👥 Contributors
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/oluwatobiss">
+        <img src="https://github.com/oluwatobiss.png" width="80px" alt="Oluwatobi Sofela"/><br/>
+        <sub><b>Oluwatobi Sofela</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ShazilParwez">
+        <img src="https://github.com/ShazilParwez.png" width="80px" alt="Shazil Parwez"/><br/>
+        <sub><b>Shazil Parwez</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/GPramodh07">
+        <img src="https://github.com/GPramodh07.png" width="80px" alt="Pramodh G"/><br/>
+        <sub><b>Pramodh G</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+*Built with ❤️ for the **Midnight MLH Hackathon 2026***
+
+**Prove you're human. Reveal nothing else. 🔒**
+
+</div>

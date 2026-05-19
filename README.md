@@ -2,6 +2,10 @@
 
 <br/>
 
+*This project is built on the Midnight Network.*
+
+<br/>
+
 # 🔒 ZIP — Zero-Exposure Identity Proof
 
 ### *"Prove you're human. Reveal nothing else."*
